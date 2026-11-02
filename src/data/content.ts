@@ -19,7 +19,7 @@ export const heroImages = {
 }
 
 // ── Collection ───────────────────────────────────────────────────────────────
-// TODO: пока отдельных страниц нет, все ссылки ведут на якорь секции.
+// Карточки ведут в нужную секцию страницы /collection (магазин).
 export const products = [
     {
         index: "01",
@@ -27,7 +27,7 @@ export const products = [
         name: "Phuket Collection",
         desc: "Flavors of the southern tropics",
         cta: "View Collection",
-        href: "#collection",
+        href: "/collection#collection",
         accent: "#8A5C3A",
         // ⚠ сейчас это ссылки на чужие сайты. Скачайте фото в public/images/products/
         // и замените на asset("images/products/phuket.jpg") и т.д.
@@ -39,7 +39,7 @@ export const products = [
         name: "Assorted Bonbons",
         desc: "Handmade chocolate bonbons",
         cta: "View Bonbons",
-        href: "#collection",
+        href: "/collection#bonbons",
         accent: "#7B4B72",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWJxbPZ7U4jOZygzbUyOyO5iDno6QWyUP9woukJdfRZ014ufrxiMg59ME&s=10",
     },
@@ -49,7 +49,7 @@ export const products = [
         name: "Single Origin Dark",
         desc: "Single ingredient artisan bars",
         cta: "View Classic",
-        href: "#collection",
+        href: "/collection#classic",
         accent: "#3D6B50",
         image: "https://hellochocolate.com/cdn/shop/products/paradai-dark-chocolate-pure-coconut-sugar-70-264640.jpg?v=1676483576&width=1000",
     },
@@ -59,7 +59,7 @@ export const products = [
         name: "Cacao Powder",
         desc: "100% pure Thai cacao powder",
         cta: "View Others",
-        href: "#collection",
+        href: "/collection#others",
         accent: "#8C6239",
         image: "https://craftchocolate.store/chocolade/wp-content/uploads/2025/12/paradai-cacaopoeder-doosje-met-zakje.jpg",
     },
@@ -191,9 +191,10 @@ export const footerContent = {
     phone: "+66 2981 6413",
     phoneHref: "tel:+6629816413",
     nav: [
-        { label: "Collection", href: "#collection" },
-        { label: "From Phuket", href: "#story" },
-        { label: "Workshop", href: "#workshop" },
-        { label: "Why Paradai", href: "#why" },
+        { label: "Collection", href: "/collection" },
+        { label: "Our story", href: "/about" },
+        { label: "Workshop", href: "/#workshop" },
+        { label: "Why Paradai", href: "/#why" },
+        { label: "Contacts", href: "/contacts" },
     ],
 }

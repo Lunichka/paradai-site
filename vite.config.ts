@@ -1,9 +1,10 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 
-// base "./" — сайт открывается и с корня домена, и из подпапки
-// (например, https://<user>.github.io/paradai-site/).
+// У сайта теперь настоящие адреса (/collection, /product/…, /payment), поэтому base — абсолютный.
+//  • локально и на своём домене: "/"
+//  • GitHub Pages (https://<user>.github.io/<repo>/): workflow сам подставляет BASE_PATH=/<repo>/
 export default defineConfig({
-    base: "./",
+    base: process.env.BASE_PATH ?? "/",
     plugins: [react()],
 })

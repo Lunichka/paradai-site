@@ -1,0 +1,233 @@
+/* ─────────────────────────────────────────────────────────────
+   Общие стили внутренних страниц: коллекция, продукт, оплата, О нас, контакты, 404.
+   Здесь — то, что раньше было скопировано в каждую страницу по отдельности.
+   ───────────────────────────────────────────────────────────── */
+
+/* Обёртка страницы: фон с едва заметным «бумажным» зерном */
+.page {
+    min-height: 100vh;
+    padding: clamp(96px, 12vw, 136px) var(--gutter) clamp(64px, 8vw, 112px);
+    background-color: var(--c-bg);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+.page__inner {
+    width: 100%;
+    max-width: var(--container); /* тот же край, что у секций главной и у шапки */
+    margin: 0 auto;
+}
+.page__inner--narrow {
+    max-width: 960px;
+}
+
+/* Заголовки страниц (Boldonse — самый широкий шрифт сайта, поэтому размеры скромнее, чем у Inter) */
+.page-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(30px, 4.6vw, 60px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+}
+.page-lead {
+    max-width: 560px;
+    margin-top: 20px;
+    font-size: clamp(17px, 1.7vw, 21px);
+    line-height: 1.5;
+    color: var(--c-ink-soft);
+}
+.block-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(22px, 2.9vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+}
+
+/* Мелкая подпись-«эйбро» над заголовком */
+.eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+}
+
+/* «Бумажная» карточка */
+.paper {
+    background: var(--c-paper);
+    border: 1px solid rgba(44, 30, 26, 0.12);
+    box-shadow: 0 10px 30px -15px rgba(44, 30, 26, 0.14);
+}
+
+/* Рукотворная кнопка: тёмная заливка, неровные скругления (токен --radius-hand) */
+.btn-hand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 17px 36px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--c-paper);
+    background: var(--c-ink);
+    border: 1.5px solid var(--c-ink);
+    border-radius: var(--radius-hand);
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.15s ease;
+}
+.btn-hand:hover:not(:disabled) {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+}
+.btn-hand:active:not(:disabled) {
+    transform: scale(0.97);
+}
+.btn-hand:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+.btn-hand--block {
+    width: 100%;
+}
+.btn-hand--outline {
+    color: var(--c-ink);
+    background: transparent;
+}
+.btn-hand--outline:hover:not(:disabled) {
+    color: var(--c-paper);
+    background: var(--c-ink);
+    border-color: var(--c-ink);
+}
+
+/* Поля форм (оплата, контакты) */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.field > span {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+}
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 15px 18px;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--c-ink);
+    background: var(--c-paper);
+    border: 1.5px solid var(--c-ink);
+    border-radius: var(--radius-hand);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+.field textarea {
+    min-height: 160px;
+    resize: vertical;
+    border-radius: 28px 8px 30px 9px / 9px 30px 8px 28px;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+    color: rgba(71, 43, 29, 0.45);
+}
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--c-accent);
+    box-shadow: 0 0 0 3px rgba(138, 62, 37, 0.14);
+}
+
+/* Скотч-«липучка» для карточек и чека */
+.tape {
+    position: absolute;
+    width: 116px;
+    height: 30px;
+    background: rgba(234, 225, 204, 0.7);
+    border-left: 1px dashed rgba(44, 30, 26, 0.12);
+    border-right: 1px dashed rgba(44, 30, 26, 0.12);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+/* Окно-подтверждение */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.modal__backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(44, 30, 26, 0.5);
+    cursor: pointer;
+}
+.modal__card {
+    position: relative;
+    width: min(100%, 380px);
+    padding: 34px 32px 32px;
+    text-align: center;
+    background: var(--c-paper);
+    border: 2px solid var(--c-ink);
+    border-radius: 6px;
+    box-shadow: 0 24px 80px rgba(44, 30, 26, 0.3);
+    animation: modal-in 0.28s var(--ease-out) both;
+}
+.modal__card:focus {
+    outline: none;
+}
+.modal__card h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+.modal__text {
+    margin: 14px 0 26px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--c-ink-soft);
+}
+.modal__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .modal__card {
+        animation: none;
+    }
+}

@@ -1,6 +1,6 @@
 # Paradai — сайт тайского крафтового шоколада
 
-Пересборка сайта из Framer в обычный проект **Vite + React + TypeScript + Framer Motion**.
+Пересборка сайта из Framer в обычный проект **Vite + React + TypeScript + Framer Motion + React Router**.
 Всё лежит в репозитории, шрифты — локально, без Framer и без запросов к Google Fonts.
 
 ## Запуск
@@ -9,28 +9,68 @@
 npm install
 npm run dev      # http://localhost:5173
 npm run build    # проверка типов + сборка в dist/
+npm run preview  # посмотреть собранную версию
 ```
+
+## Страницы
+
+| Адрес | Файл | Что это |
+| --- | --- | --- |
+| `/` | `src/pages/Home.tsx` | Главная: Hero → Collection → Bento → Gallery → Why → CTA |
+| `/collection` | `src/pages/Shop.tsx` | Витрина: плитки, классика, остальное, конструктор набора бонбонов |
+| `/product/:id` | `src/pages/Product.tsx` | Карточка товара (id берётся из `src/data/shop.ts`) |
+| `/payment` | `src/pages/Payment.tsx` | Оплата и чек (собирается из корзины) |
+| `/about` | `src/pages/About.tsx` | Our story |
+| `/contacts` | `src/pages/Contacts.tsx` | Магазины, контакты, форма |
+| любой другой | `src/pages/NotFound.tsx` | 404 |
+
+Маршруты описаны в `src/App.tsx`. Общая обвязка (шапка, футер, корзина) — `src/components/Layout.tsx`.
 
 ## Где что править
 
 | Что менять | Где |
 | --- | --- |
 | Цвета, шрифты, отступы, «ручной» радиус | `src/styles/tokens.css` |
-| Тексты, ссылки, пути к фото | `src/data/content.ts` |
-| Секции | `src/components/` (Hero, Collection, Bento, Gallery, Why, CTA, Footer) |
-| Порядок секций на странице | `src/App.tsx` |
+| Общие стили внутренних страниц (кнопки, поля, карточки, окно) | `src/styles/pages.css` |
+| Тексты главной, ссылки, пути к фото | `src/data/content.ts` |
+| Товары, цены, бонбоны, размер набора, доставка | `src/data/shop.ts` |
+| Пункты меню в шапке | массив `LINKS` в `src/components/Header.tsx` |
+| Пункты меню в футере | `footerContent.nav` в `src/data/content.ts` |
+| Секции главной | `src/components/` (Hero, Collection, Bento, Gallery, Why, CTA, Footer) |
 
 Шрифтов ровно три (роли заданы в `tokens.css`):
 
-- **Boldonse** — все заголовки страниц (`--font-display`)
+- **Boldonse** — все заголовки (`--font-display`)
 - **Inter** — основной текст, подписи, кнопки, навигация (`--font-body`)
 - **Italiana** — только логотип PARADAI (`--font-wordmark`)
 
+## Корзина
+
+Одна корзина на весь сайт: `src/context/CartContext.tsx`. Состав хранится в `localStorage`
+(ключ `paradai-cart-v1`), поэтому не пропадает после перезагрузки. Любая страница получает её через `useCart()`:
+`add`, `remove`, `increase`, `decrease`, `clear`, `count`, `subtotal`. Окно корзины — `CartDrawer.tsx`.
+Оплата и отправка формы контактов пока **демонстрационные**: деньги не списываются, письма не уходят.
+
 ## Картинки
 
-Все картинки лежат в `public/images/` в формате WebP (см. `public/images/README.md`):
-вырезки для шапки в `hero/`, фото мастерской в `gallery/`.
-Если файла нет, компонент показывает аккуратную заглушку с подписью, а не «сломанную» картинку.
+Все свои картинки лежат в `public/images/` в формате WebP (см. `public/images/README.md`):
+вырезки для шапки в `hero/`, фото мастерской в `gallery/`, бонбоны в `bonbons/`.
+Если файла нет или он не загрузился, компонент показывает аккуратную заглушку с подписью, а не «сломанную» картинку.
+
+> **Что ещё нужно заменить.** Фото плиток в магазине и карточках товаров, портрет основателя на «О нас»
+> и пара фото из Unsplash+ подтянуты по внешним ссылкам из старого Framer-проекта. Пока интернет есть, они
+> показываются, но лежат не у вас: ссылки могут умереть, а у Unsplash+ есть водяной знак.
+> Положите свои файлы в `public/images/products/` и поменяйте пути в `src/data/shop.ts` и `src/data/content.ts`.
+
+## Адрес сайта и GitHub Pages
+
+Если сайт открывается по адресу вида `https://<логин>.github.io/<репозиторий>/`, у него есть префикс.
+Он задаётся переменной `BASE_PATH` при сборке — в `deploy.yml` она уже подставляется автоматически.
+Локально (`npm run dev`) префикс не нужен.
+
+- **Свой домен** — уберите блок `env: BASE_PATH` из `.github/workflows/deploy.yml`, тогда префикс будет `/`.
+- **Прямые ссылки на внутренние страницы** (например, `/product/…`) на GitHub Pages работают благодаря
+  `dist/404.html` — это копия `index.html`, её делает `scripts/postbuild.mjs` после сборки.
 
 ## Репозиторий и публикация
 
@@ -42,7 +82,10 @@ git push -u origin main
 Публикация на GitHub Pages: **Settings → Pages → Source: GitHub Actions**.
 Workflow `.github/workflows/deploy.yml` соберёт и выложит сайт при каждом push в `main`.
 
-## Что ещё не перенесено
+## Что стоит знать
 
-Здесь только то, что вы прислали: Hero, Collection, CTA, Bento, Why. Футер и галерея пересобраны заново.
-Шапка, страницы товара, Our Story и Contacts в этот проект пока не входят.
+- **Шапка** в присланном коде отсутствовала — это простая версия под стиль сайта, чтобы страницы были связаны.
+  Если у вас есть свой макет шапки, её можно заменить целиком в `src/components/Header.tsx` и `Header.css`.
+- Подробные характеристики (вес, состав, хранение) заполнены только у **Trang 82%**. У остальных товаров
+  блок характеристик не показывается; чтобы он появился, добавьте поле `info` в `src/data/shop.ts`.
+- **Trang 82%** и **Nakhon 60%** есть только как страницы товаров и блок «worth a try», в витрине их нет.

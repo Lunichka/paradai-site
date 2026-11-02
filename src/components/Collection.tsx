@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import SafeImage from "./SafeImage"
+import SmartLink from "./SmartLink"
 import { products } from "../data/content"
 import "./Collection.css"
 
@@ -96,7 +97,7 @@ function Card({ p, idx }: { p: Product; idx: number }) {
                 <p className="product-card__desc">{p.desc}</p>
 
                 <div className="product-card__cta-row">
-                    <a
+                    <SmartLink
                         href={p.href}
                         className="product-card__cta"
                         onMouseEnter={() => setCtaHovered(true)}
@@ -121,7 +122,7 @@ function Card({ p, idx }: { p: Product; idx: number }) {
                         >
                             →
                         </motion.span>
-                    </a>
+                    </SmartLink>
                 </div>
             </motion.article>
         </div>

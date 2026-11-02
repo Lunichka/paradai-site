@@ -139,3 +139,13 @@
         margin-top: 40px;
     }
 }
+
+/* «Back to top» теперь <button> (работает на любой странице): сбрасываем стили кнопки */
+button.footer__top-link {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+}

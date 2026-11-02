@@ -1,4 +1,5 @@
 import { footerContent as f } from "../data/content"
+import SmartLink from "./SmartLink"
 import "./Footer.css"
 
 export default function Footer() {
@@ -20,7 +21,7 @@ export default function Footer() {
                         <ul className="footer__list">
                             {f.nav.map((item) => (
                                 <li key={item.href}>
-                                    <a href={item.href}>{item.label}</a>
+                                    <SmartLink href={item.href}>{item.label}</SmartLink>
                                 </li>
                             ))}
                         </ul>
@@ -36,9 +37,13 @@ export default function Footer() {
                                 <a href={f.phoneHref}>{f.phone}</a>
                             </li>
                         </ul>
-                        <a className="footer__top-link" href="#top">
+                        <button
+                            type="button"
+                            className="footer__top-link"
+                            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                        >
                             Back to top ↑
-                        </a>
+                        </button>
                     </div>
                 </div>
 

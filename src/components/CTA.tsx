@@ -1,3 +1,4 @@
+import SmartLink from "./SmartLink"
 import "./CTA.css"
 
 type Props = {
@@ -10,13 +11,13 @@ type Props = {
 
 export default function CTA({
     text = "GO TO THE COLLECTION",
-    href = "#collection",
+    href = "/collection",
     variant = "outline",
     fullWidth = false,
     openInNewTab = false,
 }: Props) {
     return (
-        <a
+        <SmartLink
             className={`paradai-cta ${variant}${fullWidth ? " full" : ""}`}
             href={href}
             target={openInNewTab ? "_blank" : undefined}
@@ -26,6 +27,6 @@ export default function CTA({
             <span className="arrow" aria-hidden>
                 →
             </span>
-        </a>
+        </SmartLink>
     )
 }

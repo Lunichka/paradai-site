@@ -1,0 +1,317 @@
+/* ── Хлебные крошки ── */
+.breadcrumbs {
+    margin-bottom: 32px;
+}
+.breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.breadcrumbs li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.breadcrumbs a {
+    color: var(--c-ink);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+}
+.breadcrumbs a:hover {
+    opacity: 0.9;
+}
+.breadcrumbs [aria-current="page"] {
+    color: var(--c-accent);
+    font-weight: 700;
+}
+.breadcrumbs__sep {
+    opacity: 0.3;
+}
+
+/* ── Основной блок ── */
+.pdp {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 56px);
+    align-items: start;
+}
+
+.pdp__gallery {
+    min-width: 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+.pdp__thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.pdp__thumb {
+    width: 72px;
+    height: 72px;
+    padding: 0;
+    background: var(--c-paper);
+    border: 2px solid transparent;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+.pdp__thumb:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(44, 30, 26, 0.18);
+}
+.pdp__thumb.active {
+    border-color: var(--c-ink);
+}
+
+.pdp__main-image {
+    flex: 1;
+    min-width: 0;
+    padding: 18px;
+    border-radius: 4px;
+}
+.pdp__main-image > div {
+    aspect-ratio: 1 / 1;
+    background: var(--c-paper);
+    border: 1px solid rgba(44, 30, 26, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.pdp__details {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.pdp__heading h1 {
+    margin: 12px 0 14px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+.pdp__heading strong {
+    font-size: 26px;
+    font-variant-numeric: tabular-nums;
+}
+
+.pdp__specs {
+    padding: 24px;
+    border-radius: 3px;
+}
+.pdp__specs table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.pdp__specs tr {
+    border-bottom: 1px dashed rgba(44, 30, 26, 0.18);
+}
+.pdp__specs tr:last-child {
+    border-bottom: 0;
+}
+.pdp__specs th,
+.pdp__specs td {
+    padding: 13px 0;
+    vertical-align: top;
+}
+.pdp__specs th {
+    width: 40%;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+}
+.pdp__specs td {
+    text-align: right;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.pdp__storage {
+    margin-top: 18px;
+    padding: 16px;
+    background: #f7f5f0;
+    border: 1px solid rgba(44, 30, 26, 0.06);
+    border-radius: 3px;
+}
+.pdp__storage p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--c-ink-soft);
+}
+
+.pdp__purchase {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.qty-stepper {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    background: var(--c-paper);
+    border: 1px solid var(--c-ink);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.qty-stepper button {
+    width: 52px;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--c-ink);
+    font: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+.qty-stepper button:hover {
+    background: var(--c-ink);
+    color: var(--c-paper);
+}
+.qty-stepper span {
+    width: 52px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.pdp__add {
+    flex: 1;
+    height: 56px;
+    padding-block: 0;
+}
+
+/* ── «Worth a try» ── */
+.related {
+    margin-top: clamp(72px, 9vw, 112px);
+    padding-top: clamp(48px, 6vw, 72px);
+    border-top: 1px solid rgba(44, 30, 26, 0.15);
+}
+.related__head {
+    margin-bottom: 36px;
+    text-align: center;
+}
+.related__head h2 {
+    margin-top: 10px;
+}
+.related__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+.related-card {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    align-items: center;
+    gap: 18px;
+    border-radius: 3px;
+}
+.related-card__image {
+    text-decoration: none;
+    width: 96px;
+    height: 96px;
+    display: block;
+    background: #f1ede4;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.related-card__info h3 {
+    margin: 6px 0;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.related-card__info h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+.related-card__info h3 a:hover {
+    color: var(--c-accent);
+}
+.related-card__info strong {
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+    .related-card {
+        grid-template-columns: 82px 1fr auto;
+    }
+    .related-card__image {
+        width: 82px;
+        height: 82px;
+    }
+}
+@media (max-width: 767px) {
+    .pdp {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .pdp__thumb {
+        width: 56px;
+        height: 56px;
+    }
+    .pdp__main-image {
+        padding: 14px;
+    }
+    .pdp__specs {
+        padding: 20px;
+    }
+    .pdp__specs th,
+    .pdp__specs td {
+        display: block;
+        width: 100%;
+        padding: 6px 0;
+        text-align: left;
+    }
+    .pdp__specs td {
+        padding-bottom: 14px;
+    }
+    .pdp__purchase {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .pdp__add {
+        flex: none;
+        width: 100%;
+    }
+    .qty-stepper button,
+    .qty-stepper span {
+        flex: 1;
+        width: auto;
+    }
+    .related__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .related-card {
+        padding: 16px;
+        gap: 14px;
+    }
+}

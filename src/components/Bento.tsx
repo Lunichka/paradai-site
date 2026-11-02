@@ -1,4 +1,5 @@
 import SafeImage from "./SafeImage"
+import SmartLink from "./SmartLink"
 import { bentoPhoto } from "../data/content"
 import "./Bento.css"
 
@@ -62,9 +63,9 @@ export default function Bento() {
                 </div>
 
                 <div className="bento__cta-row">
-                    <a href="#why" className="hand-border-btn">
+                    <SmartLink href="/about" className="hand-border-btn">
                         discover our journey →
-                    </a>
+                    </SmartLink>
                 </div>
             </div>
         </section>

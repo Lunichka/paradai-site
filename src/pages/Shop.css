@@ -1,0 +1,320 @@
+.shop__head {
+    margin-bottom: clamp(24px, 4vw, 48px);
+}
+.shop__head h1 {
+    margin-top: 12px;
+}
+.shop__jump {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+}
+.shop__jump a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-ink);
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    padding-bottom: 3px;
+    transition: background-size 0.3s var(--ease-out);
+}
+.shop__jump a:hover {
+    background-size: 100% 1px;
+}
+
+.shop-section {
+    margin-top: clamp(56px, 8vw, 96px);
+    scroll-margin-top: 88px;
+}
+.shop-section__head {
+    max-width: 620px;
+    margin-bottom: 28px;
+}
+.shop-section__head h2 {
+    margin: 10px 0 12px;
+}
+.shop-section__head p {
+    max-width: 520px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--c-ink-soft);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(18px, 2.4vw, 32px);
+}
+.shop-section--compact .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.shop-section--feature .products-grid {
+    grid-template-columns: minmax(0, 1fr);
+}
+.shop-section--feature .shop-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+}
+
+/* ── Карточка товара ── */
+.shop-card {
+    min-width: 0;
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.shop-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+.shop-card__visual {
+    aspect-ratio: 1.35 / 1;
+    margin-bottom: 18px;
+    background: #f1ede4;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.shop-card__visual img {
+    transition: transform 0.4s var(--ease-out);
+}
+.shop-card__link:hover .shop-card__visual img {
+    transform: scale(1.04);
+}
+.shop-card__main {
+    padding-inline: 4px;
+}
+.shop-card__main h3 {
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+}
+.shop-card__link:hover h3 {
+    color: var(--c-accent);
+}
+.shop-card__footer {
+    margin-top: auto;
+    padding: 22px 4px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.shop-card__footer strong {
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-ink);
+    background: transparent;
+    border: 1.5px solid var(--c-ink);
+    border-radius: 50%;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+.icon-btn:hover {
+    background: var(--c-ink);
+    color: var(--c-paper);
+}
+
+/* ── Бонбоньерки ── */
+.bonbons-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(24px, 3vw, 36px);
+    align-items: start;
+}
+.builder {
+    padding: clamp(20px, 2.4vw, 28px);
+    border-radius: 10px;
+}
+.builder__title {
+    margin-bottom: 26px;
+}
+.builder__title h3 {
+    margin: 8px 0 10px;
+}
+.builder__title p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--c-ink-soft);
+}
+
+.bonbons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 26px;
+}
+.bonbon-card {
+    min-height: 112px;
+    padding: 12px 6px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--c-ink);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(90, 56, 40, 0.14);
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    transition:
+        border-color 0.25s ease,
+        transform 0.2s ease,
+        opacity 0.25s ease;
+}
+.bonbon-card:hover:not(:disabled) {
+    border-color: var(--c-accent);
+}
+.bonbon-card:active:not(:disabled) {
+    transform: scale(0.96);
+}
+.bonbon-card:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+.bonbon-card__img {
+    width: 56px;
+    height: 56px;
+    display: flex;
+}
+.bonbon-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 8px rgba(44, 30, 26, 0.16));
+    transition: transform 0.25s ease;
+}
+.bonbon-card:hover:not(:disabled) img {
+    transform: translateY(-2px) scale(1.06);
+}
+.bonbon-card strong {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.custom-box {
+    padding: clamp(16px, 2vw, 22px);
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(90, 56, 40, 0.14);
+    border-radius: 8px;
+}
+.box-grid {
+    aspect-ratio: 1 / 1;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    background: #eadbc8;
+    border: 1px solid rgba(44, 30, 26, 0.2);
+    border-radius: 4px;
+    box-shadow: inset 0 8px 18px rgba(44, 30, 26, 0.08);
+}
+.box-slot {
+    min-width: 0;
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(44, 30, 26, 0.15);
+    border-radius: 4px;
+    background: rgba(210, 180, 140, 0.42);
+    cursor: pointer;
+}
+.box-slot:disabled {
+    cursor: default;
+}
+.box-bonbon {
+    width: 86%;
+    height: 86%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 8px rgba(44, 30, 26, 0.16));
+    animation: bonbon-in 0.22s ease-out both;
+}
+@keyframes bonbon-in {
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.box-caption {
+    margin-top: 22px;
+    text-align: center;
+}
+.box-caption h3 {
+    margin: 8px 0 4px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+.box-caption p {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--c-ink-soft);
+}
+.builder__add {
+    margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+    .products-grid,
+    .shop-section--compact .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .shop-section--feature .shop-card,
+    .bonbons-layout {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 640px) {
+    .products-grid,
+    .shop-section--compact .products-grid {
+        grid-template-columns: 1fr;
+    }
+    .shop-section--feature .shop-card {
+        display: flex;
+        gap: 0;
+    }
+    .shop-card {
+        padding: 14px;
+    }
+    .bonbons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .bonbon-card {
+        min-height: 128px;
+    }
+}
