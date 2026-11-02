@@ -1,0 +1,72 @@
+import SafeImage from "./SafeImage"
+import { bentoPhoto } from "../data/content"
+import "./Bento.css"
+
+export default function Bento() {
+    return (
+        <section id="story" className="bento">
+            <div className="bento__inner">
+                <h2 className="section-title bento__title">from Phuket with pride</h2>
+
+                <div className="bento__grid">
+                    {/* 1. Фото в стиле полароида */}
+                    <figure className="bento__polaroid">
+                        <div className="bento__tape" aria-hidden />
+                        <div className="bento__photo">
+                            <SafeImage
+                                src={bentoPhoto}
+                                alt="Cacao farmers tending young plants in a nursery"
+                                label="Farmers photo"
+                            />
+                        </div>
+                    </figure>
+
+                    <div className="bento__col">
+                        {/* 2. Миссия — «газетная вырезка» */}
+                        <div className="bento__paper">
+                            <span className="bento__quote" aria-hidden>
+                                “
+                            </span>
+
+                            <div>
+                                <h3 className="bento__label">Our Mission</h3>
+                                <p className="bento__mission">
+                                    We work directly with local farmers on Phuket island and
+                                    nearby provinces. Together, we nurture the crops to bring out
+                                    the unique, floral character of authentic Thai cacao.
+                                </p>
+                            </div>
+
+                            <div className="bento__sign">
+                                <span>Paradai Sourcing Team</span>
+                                <div className="bento__stamp">since 2016</div>
+                            </div>
+                        </div>
+
+                        {/* 3. Две маленькие карточки */}
+                        <div className="bento__mini-row">
+                            <div className="bento__mini">
+                                <h4 className="bento__mini-title">Location</h4>
+                                <p className="bento__mini-value">7.8804° N, 98.3923° E</p>
+                                <p className="bento__mini-sub">Phuket Highlands</p>
+                            </div>
+                            <div className="bento__mini">
+                                <h4 className="bento__mini-title">Sourcing</h4>
+                                <p className="bento__mini-value bento__mini-value--accent">
+                                    100% Direct Trade
+                                </p>
+                                <p className="bento__mini-sub">No middlemen, fair pay</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bento__cta-row">
+                    <a href="#why" className="hand-border-btn">
+                        discover our journey →
+                    </a>
+                </div>
+            </div>
+        </section>
+    )
+}

@@ -1,0 +1,36 @@
+/* ─────────────────────────────────────────────────────────────
+   Paradai — дизайн-токены.
+   Всё, что хочется поменять «везде сразу», меняется здесь.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+    /* Шрифты: ровно три роли, больше не нужно.
+       display  — все заголовки страниц (Boldonse)
+       body     — основной текст, подписи, кнопки, навигация (Inter)
+       wordmark — ТОЛЬКО логотип PARADAI (Italiana) */
+    --font-display: "Boldonse", "Inter Variable", system-ui, sans-serif;
+    --font-body: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-wordmark: "Italiana", "Times New Roman", serif;
+
+    /* Цвета */
+    --c-bg: #ebe6da; /* основной фон секций */
+    --c-bg-soft: #ede8dc;
+    --c-paper: #faf9f6; /* «бумага»: карточки, рамки фото */
+    --c-ink: #472b1d; /* основной тёмно-шоколадный */
+    --c-ink-deep: #2c1e1a; /* самый тёмный: кнопки, рамки */
+    --c-ink-soft: #6b5245; /* приглушённый текст */
+    --c-accent: #8a3e25; /* терракота для мелких акцентов */
+    --c-accent-card: #9c5b46; /* терракотовый фон футера */
+    --c-hairline: rgba(44, 30, 26, 0.12);
+
+    /* Сетка */
+    --container: 1200px;
+    --gutter: clamp(20px, 5vw, 72px);
+    --section-y: clamp(64px, 9vw, 120px);
+
+    /* «Ручная» форма — неровные скругления, один набор на весь сайт */
+    --radius-hand: 255px 16px 225px 14px / 18px 225px 16px 255px;
+    --radius-card: 16px;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

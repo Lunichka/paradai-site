@@ -1,0 +1,242 @@
+.bento {
+    background: var(--c-bg);
+    padding: var(--section-y) var(--gutter);
+}
+
+.bento__inner {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.bento__title {
+    margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.bento__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* ── Полароид ── */
+.bento__polaroid {
+    grid-column: span 7;
+    margin: 0;
+    padding: 20px 20px 56px;
+    position: relative;
+    overflow: hidden;
+    background: var(--c-paper);
+    border: 1px solid var(--c-hairline);
+    border-radius: 2px;
+    box-shadow: 0 8px 24px -10px rgba(44, 30, 26, 0.15);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.bento__polaroid:hover {
+    transform: scale(1.01) rotate(-0.5deg);
+}
+
+.bento__tape {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 80px;
+    height: 24px;
+    transform: translateX(-50%) translateY(-4px);
+    background: rgba(138, 62, 37, 0.2);
+    border: 1px solid rgba(44, 30, 26, 0.1);
+    border-top: 0;
+    opacity: 0.6;
+}
+
+.bento__photo {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    overflow: hidden;
+    background: #ddd8ce;
+    border: 1px solid rgba(44, 30, 26, 0.1);
+    border-radius: 2px;
+}
+
+.bento__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) sepia(20%) contrast(110%) brightness(95%);
+    transition: transform 0.7s ease;
+}
+.bento__polaroid:hover .bento__photo img {
+    transform: scale(1.05);
+}
+
+/* ── Правая колонка ── */
+.bento__col {
+    grid-column: span 5;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bento__paper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    background: var(--c-paper);
+    border: 1px solid rgba(44, 30, 26, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.bento__quote {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-family: var(--font-body);
+    font-size: 72px;
+    line-height: 1;
+    color: rgba(44, 30, 26, 0.08);
+    pointer-events: none;
+    user-select: none;
+}
+
+.bento__label {
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-ink);
+}
+
+.bento__mission {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--c-ink-deep);
+}
+
+.bento__sign {
+    margin-top: 24px;
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px dashed rgba(44, 30, 26, 0.2);
+    font-size: 14px;
+}
+
+/* Штамп: увеличен, чтобы «since 2016» целиком помещалось внутри круга */
+.bento__stamp {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    text-align: center;
+    transform: rotate(12deg);
+    border: 1px solid rgba(138, 62, 37, 0.45);
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--c-accent);
+}
+
+.bento__mini-row {
+    display: flex;
+    gap: 16px;
+}
+
+.bento__mini {
+    flex: 1;
+    padding: 16px;
+    background: rgba(250, 249, 246, 0.6);
+    border: 1px solid var(--c-hairline);
+    border-radius: 2px;
+}
+
+.bento__mini-title {
+    margin-bottom: 14px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-ink-soft);
+}
+
+.bento__mini-value {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--c-ink);
+}
+.bento__mini-value--accent {
+    color: var(--c-accent);
+}
+
+.bento__mini-sub {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--c-ink-soft);
+}
+
+/* ── Кнопка «ручной» формы ── */
+.bento__cta-row {
+    margin-top: 48px;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px solid var(--c-hairline);
+}
+
+.hand-border-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    color: var(--c-ink-deep);
+    background: transparent;
+    border: 1.5px solid var(--c-ink-deep);
+    /* Было 8 значений без «/» — браузер молча игнорировал такое правило */
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+.hand-border-btn:hover {
+    background: var(--c-ink-deep);
+    color: var(--c-paper);
+}
+.hand-border-btn:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 768px) {
+    .bento__grid {
+        display: flex;
+        flex-direction: column;
+    }
+    .bento__title {
+        text-align: center;
+    }
+    .bento__polaroid {
+        padding-bottom: 40px;
+    }
+    .bento__mini-row {
+        flex-direction: column;
+    }
+    .bento__cta-row {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,141 @@
+/* Футер: единая терракотовая плашка, скруглённая сверху и прижатая к низу страницы.
+   Раньше: у каждого угла был свой радиус (4/48/6/40px) — плашка выглядела «сломанной». */
+
+.footer {
+    padding: 0 clamp(12px, 2vw, 28px);
+    background: #f4ede1; /* цвет предыдущей секции — за скруглёнными углами нет «щелей» */
+}
+
+.footer__card {
+    --paper: var(--c-paper);
+
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    container-type: inline-size;
+
+    background: var(--c-accent-card);
+    color: var(--paper);
+    border-radius: 36px 36px 0 0;
+}
+
+.footer__top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    padding: clamp(40px, 6cqw, 72px) clamp(24px, 5cqw, 64px) 0;
+}
+
+.footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+.footer__headline {
+    font-size: clamp(18px, 2cqw, 24px);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+}
+
+.footer__copyright {
+    font-size: 13.5px;
+    line-height: 1.5;
+    opacity: 0.92;
+}
+
+.footer__heading {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.92;
+}
+
+.footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer__list a,
+.footer__top-link {
+    color: var(--paper);
+    font-size: 16px;
+    line-height: 1.5;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    transition: background-size 0.35s var(--ease-out);
+    overflow-wrap: anywhere;
+}
+.footer__list a:hover,
+.footer__top-link:hover {
+    background-size: 100% 1px;
+}
+
+.footer__top-link {
+    align-self: flex-start;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.footer__card :focus-visible {
+    outline-color: var(--paper);
+}
+
+/* Огромный логотип: ширина зависит от ширины плашки (cqw), поэтому всегда
+   занимает ровно её ширину и не обрезается ни на каком экране. */
+.footer__wordmark {
+    margin-top: clamp(32px, 6cqw, 72px);
+    padding-inline: clamp(8px, 2cqw, 24px);
+    text-align: center;
+    font-family: var(--font-wordmark);
+    font-size: 25.2cqw;
+    line-height: 0.8;
+    letter-spacing: 0;
+    white-space: nowrap;
+    color: var(--paper);
+    user-select: none;
+    pointer-events: none;
+    /* Italiana без нижних выносных элементов — лёгкий отступ, чтобы буквы стояли на плашке, а не «висели» */
+    padding-bottom: 0.04em;
+}
+
+@media (max-width: 890px) {
+    .footer__top {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer__intro {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer__card {
+        border-radius: 28px 28px 0 0;
+    }
+    .footer__top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 44px 24px 0;
+    }
+    .footer__headline {
+        font-size: 19px;
+    }
+    .footer__wordmark {
+        font-size: 25.2cqw;
+        margin-top: 40px;
+    }
+}
