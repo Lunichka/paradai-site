@@ -3,5 +3,5 @@
     display: flex;
     justify-content: center;
     padding: clamp(48px, 7vw, 96px) var(--gutter) clamp(56px, 8vw, 112px);
-    background: #f4ede1;
+    background: var(--c-bg);
 }

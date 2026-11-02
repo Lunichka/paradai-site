@@ -82,7 +82,7 @@ function hexToRgba(hex: string, alpha: number): string {
 }
 
 export default function Why({
-    bg = "#F4EDE1",
+    bg = "var(--c-bg)",
     cardAlt = "#E7D8BC",
     accent = "#C15C2E",
     ink = "#34211A",
