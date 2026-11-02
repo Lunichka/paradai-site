@@ -29,9 +29,8 @@ export const products = [
         cta: "View Collection",
         href: "/collection#collection",
         accent: "#8A5C3A",
-        // ⚠ сейчас это ссылки на чужие сайты. Скачайте фото в public/images/products/
-        // и замените на asset("images/products/phuket.jpg") и т.д.
-        image: "https://craftchocolate.store/chocolade/wp-content/uploads/2025/01/phuket-paradai-70-puur.jpg",
+        // Фото лежат в public/images/products/. Карточки 02 и 04 пока ещё ссылаются на чужие сайты.
+        image: asset("images/products/phuket-milk-60.webp"),
     },
     {
         index: "02",
@@ -51,7 +50,7 @@ export const products = [
         cta: "View Classic",
         href: "/collection#classic",
         accent: "#3D6B50",
-        image: "https://hellochocolate.com/cdn/shop/products/paradai-dark-chocolate-pure-coconut-sugar-70-264640.jpg?v=1676483576&width=1000",
+        image: asset("images/products/coconut-sugar-70.webp"),
     },
     {
         index: "04",

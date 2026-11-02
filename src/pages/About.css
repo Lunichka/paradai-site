@@ -101,6 +101,7 @@
     background: #ddd;
 }
 .founder-card__photo img {
+    object-position: 52% 30%;
     filter: grayscale(1) contrast(1.05);
 }
 .founder-card__caption {

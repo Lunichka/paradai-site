@@ -11,7 +11,7 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 const ENTRY_TILT = 10
 
 // Портрет — временная картинка с чужого сайта. Положите свою в public/images/about/ и поправьте путь.
-const FOUNDER_PHOTO = "https://media.timeout.com/images/105696892/750/562/image.jpg"
+const FOUNDER_PHOTO = `${import.meta.env.BASE_URL}images/products/founder.webp`
 
 const FLAVORS: [string, number][] = [
     ["Honey sweetness", 85],
@@ -77,7 +77,7 @@ export default function About() {
                     >
                         <Reveal className="founder-card paper" rest={-2} direction={1} hoverFlatten delay={0.12} animate={animate}>
                             <div className="founder-card__photo">
-                                <SafeImage src={FOUNDER_PHOTO} alt="Portrait placeholder" label="Portrait" />
+                                <SafeImage src={FOUNDER_PHOTO} alt="Founder of PARADAI" label="Portrait" />
                             </div>
                             <div className="founder-card__caption">
                                 <h4>Phurich Tanawut</h4>

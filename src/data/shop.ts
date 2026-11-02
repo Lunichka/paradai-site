@@ -21,8 +21,7 @@ export type Product = {
     title: string
     details: string
     price: number
-    /** ⚠ пока это ссылки на чужие магазины (hotlink). Скачайте фото в public/images/products/
-     *  и замените на asset("images/products/….webp"). */
+    /** Путь к фото: asset("images/products/….webp"). Часть товаров пока ещё ссылается на чужие сайты — замените на свои файлы. */
     image: string
     info?: ProductDetails
 }
@@ -34,7 +33,7 @@ export const products: Product[] = [
         title: "Dark Milk Chocolate 60%",
         details: "Phuket Collection",
         price: 7.5,
-        image: "https://down-th.img.susercontent.com/file/th-11134207-7rasd-mb050k5fxw1t3d.webp",
+        image: asset("images/products/phuket-milk-60.webp"),
     },
     {
         id: "phuket-dark-milk-63",
@@ -42,7 +41,7 @@ export const products: Product[] = [
         title: "Dark Milk Chocolate 63%",
         details: "Belize",
         price: 7.5,
-        image: "https://down-th.img.susercontent.com/file/th-11134207-7r98u-llrqmkvwtvv284.webp",
+        image: asset("images/products/belize-63.webp"),
     },
     {
         id: "phuket-sugar-free-77",
@@ -50,7 +49,7 @@ export const products: Product[] = [
         title: "Dark Milk Chocolate 77%",
         details: "Sugar-Free",
         price: 7.5,
-        image: "https://down-th.img.susercontent.com/file/th-11134207-7rask-mb000yojdfnl43.webp",
+        image: asset("images/products/sugar-free-77.webp"),
     },
     {
         id: "phuket-dark-milk-60-2",
@@ -58,7 +57,7 @@ export const products: Product[] = [
         title: "Dark Milk Chocolate 60%",
         details: "Phuket Collection",
         price: 7.5,
-        image: "https://down-th.img.susercontent.com/file/th-11134207-7ras9-mb00hl7vhim9fd.webp",
+        image: asset("images/products/phuket-milk-60-b.webp"),
     },
     {
         id: "phuket-dark-milk-60-3",
@@ -66,7 +65,8 @@ export const products: Product[] = [
         title: "Dark Milk Chocolate 75%",
         details: "Phuket Collection",
         price: 7.5,
-        image: "https://down-th.img.susercontent.com/file/th-11134207-7rasb-mazzf4967q7o83.webp",
+        image: asset("images/products/nakhon-75.webp"),
+        info: { gallery: [asset("images/products/nakhon-75-lifestyle.webp")] },
     },
     {
         id: "origin-dark-70",
@@ -74,7 +74,8 @@ export const products: Product[] = [
         title: "Single Origin Dark 70%",
         details: "Single Ingredient Artisan Bar",
         price: 7.5,
-        image: "https://down-th.img.susercontent.com/file/th-11134207-7ras9-mb0051pq7hq9ea.webp",
+        image: asset("images/products/chanthaburi-70.webp"),
+        info: { gallery: [asset("images/products/chanthaburi-70-lifestyle.webp")] },
     },
     {
         id: "origin-dark-85",
@@ -124,7 +125,7 @@ export const products: Product[] = [
         title: "Dark Milk Chocolate",
         details: "Nakhon 60%",
         price: 7.5,
-        image: "https://craftchocolate.store/chocolade/wp-content/uploads/2024/03/paradai-pure-chocolade-thailand-zuid.jpg",
+        image: asset("images/products/nakhon-58.webp"),
     },
 ]
 
