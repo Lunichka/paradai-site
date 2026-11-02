@@ -16,29 +16,47 @@ type Props = {
     accentColor?: string
 }
 
-/** Запасной знак-треугольник (рисуется, пока нет triangle.png) */
-function TriangleMark({ opacity }: { opacity: number }) {
+/**
+ * Буква «A» в PAR▲DAI — золотой треугольник.
+ * Слот в потоке текста: высота = высоте заглавных Italiana (0.7em), нижний край стоит на базовой линии,
+ * поэтому знак ведёт себя как настоящая буква. Ширина слота (1em) — расстояние между R и D;
+ * сузьте до ~0.62em (ширина обычной «A»), если нужен плотный набор.
+ * Если файла нет, рисуется запасной SVG.
+ */
+function TriangleA({ opacity, src }: { opacity: number; src: string }) {
+    const [missing, setMissing] = useState(false)
+    const fill = {
+        position: "absolute",
+        left: "50%",
+        bottom: 0,
+        height: "100%",
+        width: "auto",
+        transform: "translateX(-50%)",
+        opacity,
+        pointerEvents: "none",
+    } as const
+
     return (
-        <svg
-            viewBox="0 0 60 100"
-            aria-hidden
+        <span
             style={{
-                position: "absolute",
-                left: "53%",
-                top: "50%",
-                width: "0.34em",
-                height: "auto",
-                transform: "translate(-50%, -50%)",
-                opacity,
-                pointerEvents: "none",
-                zIndex: 2,
+                position: "relative",
+                display: "block",
+                // Как в живой версии: «A» стоит с воздухом по бокам (~1em), а не вплотную, как обычная буква
+                width: "1em",
+                height: "0.7em",
             }}
         >
-            <g fill="none" stroke="#A8915F" strokeWidth="1.4" strokeLinejoin="round">
-                <path d="M2 2 L58 98 L2 98 Z" />
-                <path d="M2 74 L40 62 M2 86 L26 76 M2 62 L48 50" />
-            </g>
-        </svg>
+            {missing ? (
+                <svg viewBox="0 0 60 88" style={fill}>
+                    <g fill="none" stroke="#AF8E57" strokeWidth="2.6" strokeLinejoin="round">
+                        <path d="M3 3 L57 85 L3 85 Z" />
+                        <path d="M3 66 L40 55 M3 76 L26 68 M3 55 L48 44" />
+                    </g>
+                </svg>
+            ) : (
+                <img src={src} alt="" onError={() => setMissing(true)} style={fill} />
+            )}
+        </span>
     )
 }
 
@@ -49,13 +67,12 @@ export default function Hero({
     subtitle = "",
     scrollHint = "Scroll to unwrap",
     bgColor = "#EBE6DA",
-    textColor = "#2C1E1A",
+    textColor = "#472B1D",
     accentColor = "#8A3E25",
 }: Props) {
     const containerRef = useRef<HTMLDivElement>(null)
     const [progress, setProgress] = useState(0)
     const [mouse, setMouse] = useState({ x: 0, y: 0, active: false })
-    const [triangleMissing, setTriangleMissing] = useState(false)
     const reduce = useReducedMotion()
 
     useEffect(() => {
@@ -216,7 +233,8 @@ export default function Hero({
                         style={{
                             position: "relative",
                             display: "flex",
-                            alignItems: "center",
+                            // baseline: низ «A»-треугольника встаёт на одну линию с PAR и DAI
+                            alignItems: "baseline",
                             fontFamily: "var(--font-wordmark)",
                             fontSize: "clamp(72px, 12vw, 200px)",
                             lineHeight: 0.86,
@@ -235,28 +253,8 @@ export default function Hero({
                             PAR
                         </span>
 
-                        {triangleMissing ? (
-                            <TriangleMark opacity={triangleOpacity} />
-                        ) : (
-                            <img
-                                src={heroImages.triangle}
-                                alt=""
-                                onError={() => setTriangleMissing(true)}
-                                style={{
-                                    position: "absolute",
-                                    left: "53%",
-                                    top: "50%",
-                                    width: "0.48em",
-                                    height: "auto",
-                                    transform: "translate(-50%, -50%)",
-                                    opacity: triangleOpacity * 0.9,
-                                    pointerEvents: "none",
-                                    zIndex: 2,
-                                }}
-                            />
-                        )}
+                        <TriangleA src={heroImages.triangle} opacity={triangleOpacity * 0.9} />
 
-                        <span style={{ width: "clamp(50px, 10vw, 150px)" }} />
                         <span
                             style={{
                                 transform: `translateX(${logoSplit}px)`,
@@ -339,7 +337,7 @@ export default function Hero({
                         filter: "drop-shadow(0 20px 50px rgba(44, 30, 26, 0.20))",
                     }}
                 >
-                    <SafeImage src={heroImages.chocolate} alt="Paradai chocolate bar" label="Chocolate" fit="contain" />
+                    <SafeImage src={heroImages.chocolate} alt="Paradai chocolate bar" label="Chocolate" fit="contain" eager />
                 </div>
 
                 {/* Стручок */}
@@ -357,7 +355,7 @@ export default function Hero({
                         filter: "drop-shadow(0 12px 26px rgba(44, 30, 26, 0.15))",
                     }}
                 >
-                    <SafeImage src={heroImages.pod} alt="Open cacao pod" label="Cacao pod" fit="contain" />
+                    <SafeImage src={heroImages.pod} alt="Open cacao pod" label="Cacao pod" fit="contain" eager />
                 </div>
 
                 {/* Лист */}
@@ -374,7 +372,7 @@ export default function Hero({
                         transition: `transform ${smooth}, opacity ${smooth}`,
                     }}
                 >
-                    <SafeImage src={heroImages.leaf} alt="Cacao leaf" label="Leaf" fit="contain" />
+                    <SafeImage src={heroImages.leaf} alt="Cacao leaf" label="Leaf" fit="contain" eager />
                 </div>
 
                 {/* Бобы */}
@@ -403,7 +401,7 @@ export default function Hero({
                                 filter: "drop-shadow(0 10px 20px rgba(44, 30, 26, 0.12))",
                             }}
                         >
-                            <SafeImage src={bean.src} alt="" label={`Bean ${(i % 3) + 1}`} fit="contain" />
+                            <SafeImage src={bean.src} alt="" label={`Bean ${(i % 3) + 1}`} fit="contain" eager />
                         </div>
                     )
                 })}

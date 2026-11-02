@@ -5,9 +5,10 @@ import SafeImage from "./SafeImage"
 import { galleryPhotos } from "../data/content"
 import "./Gallery.css"
 
-// Разные пропорции и лёгкие наклоны — как фото, разложенные на столе, а не ровная лента
-const RATIOS = ["4 / 3", "4 / 5", "4 / 3", "4 / 5", "4 / 3", "4 / 5"]
-const TILTS = [-1.2, 0.8, -0.6, 1, -0.4, 0.9]
+// Лёгкие наклоны — как фото, разложенные на столе, а не ровная лента.
+// Пропорции кадра берутся из galleryPhotos[i].orientation (content.ts).
+const TILTS = [-1.2, 0.8, -0.6, 1, -0.4, 0.9, -0.8, 0.6, -1]
+const RATIO = { portrait: "4 / 5", landscape: "4 / 3" } as const
 
 export default function Gallery() {
     const scroller = useRef<HTMLDivElement>(null)
@@ -122,11 +123,16 @@ export default function Gallery() {
                 {galleryPhotos.map((photo, i) => (
                     <figure
                         key={photo.src}
-                        className={`gallery__item${RATIOS[i % RATIOS.length] === "4 / 5" ? " gallery__item--portrait" : ""}`}
+                        className={`gallery__item${photo.orientation === "portrait" ? " gallery__item--portrait" : ""}`}
                         style={{ ["--tilt" as string]: `${TILTS[i % TILTS.length]}deg` }}
                     >
-                        <div className="gallery__photo" style={{ aspectRatio: RATIOS[i % RATIOS.length] }}>
-                            <SafeImage src={photo.src} alt={photo.alt} label={photo.caption} />
+                        <div className="gallery__photo" style={{ aspectRatio: RATIO[photo.orientation] }}>
+                            <SafeImage
+                                src={photo.src}
+                                alt={photo.alt}
+                                label={photo.caption}
+                                style={{ objectPosition: photo.focus ?? "50% 50%" }}
+                            />
                         </div>
                         <figcaption className="gallery__caption">
                             <span>{String(i + 1).padStart(2, "0")}</span>

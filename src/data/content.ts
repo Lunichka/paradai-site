@@ -5,16 +5,17 @@
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
-// Положите PNG с прозрачным фоном в public/images/hero/ с этими именами.
+// WebP с прозрачным фоном в public/images/hero/. Чтобы заменить картинку, положите файл
+// с тем же именем (или поправьте путь здесь).
 export const heroImages = {
-    chocolate: asset("images/hero/chocolate.png"),
-    pod: asset("images/hero/pod.png"),
-    leaf: asset("images/hero/leaf.png"),
-    bean1: asset("images/hero/bean-1.png"),
-    bean2: asset("images/hero/bean-2.png"),
-    bean3: asset("images/hero/bean-3.png"),
-    // Если файла нет, рисуется запасной SVG-треугольник
-    triangle: asset("images/hero/triangle.png"),
+    chocolate: asset("images/hero/chocolate.webp"),
+    pod: asset("images/hero/pod.webp"),
+    leaf: asset("images/hero/leaf.webp"),
+    bean1: asset("images/hero/bean-1.webp"),
+    bean2: asset("images/hero/bean-2.webp"),
+    bean3: asset("images/hero/bean-3.webp"),
+    // Золотой треугольник — это буква «A» в PAR▲DAI. Если файла нет, рисуется запасной SVG.
+    triangle: asset("images/hero/triangle.webp"),
 }
 
 // ── Collection ───────────────────────────────────────────────────────────────
@@ -104,14 +105,82 @@ export const whySteps = [
 ]
 
 // ── Gallery ──────────────────────────────────────────────────────────────────
-// Положите фото в public/images/gallery/ (jpg/webp). Подписи — временные, поправьте.
-export const galleryPhotos = [
-    { src: asset("images/gallery/01.jpg"), alt: "Melted chocolate being poured from a steel tempering pot", caption: "tempering" },
-    { src: asset("images/gallery/02.jpg"), alt: "Two chocolate makers working in the Paradai kitchen", caption: "the kitchen" },
-    { src: asset("images/gallery/03.jpg"), alt: "Roasted cacao beans in a roasting drum", caption: "roasting" },
-    { src: asset("images/gallery/04.jpg"), alt: "Hand-wrapped chocolate bars ready for packing", caption: "wrapping" },
-    { src: asset("images/gallery/05.jpg"), alt: "Cacao pods on a Phuket farm", caption: "the farm" },
-    { src: asset("images/gallery/06.jpg"), alt: "Finished Paradai bars on a wooden table", caption: "the bars" },
+// Фото лежат в public/images/gallery/. Порядок здесь = порядок в ленте.
+//  orientation — "portrait" (4:5) или "landscape" (4:3): так карточки чередуются по высоте.
+//  focus       — что оставить в кадре при обрезке (object-position: "x% y%").
+// Подписи и alt-тексты написаны по содержимому кадров — поправьте под себя.
+export type GalleryPhoto = {
+    src: string
+    alt: string
+    caption: string
+    orientation: "portrait" | "landscape"
+    focus?: string
+}
+
+export const galleryPhotos: GalleryPhoto[] = [
+    {
+        src: asset("images/gallery/01-roasting.webp"),
+        alt: "Cacao beans tumbling in the drum of a roaster",
+        caption: "roasting",
+        orientation: "portrait",
+        focus: "50% 62%",
+    },
+    {
+        src: asset("images/gallery/02-kitchen.webp"),
+        alt: "Two makers in hairnets working at the counter of the Paradai kitchen",
+        caption: "the kitchen",
+        orientation: "landscape",
+        focus: "42% 50%",
+    },
+    {
+        src: asset("images/gallery/03-grinding.webp"),
+        alt: "A maker in a hairnet and mask watching a stone grinder turn chocolate",
+        caption: "grinding",
+        orientation: "portrait",
+        focus: "50% 30%",
+    },
+    {
+        src: asset("images/gallery/04-glass.webp"),
+        alt: "Makers working at the counter, seen through the glass wall of the kitchen",
+        caption: "behind the glass",
+        orientation: "landscape",
+        focus: "50% 50%",
+    },
+    {
+        src: asset("images/gallery/05-tempering.webp"),
+        alt: "Melted dark chocolate poured from a steel pot into a bowl on a scale",
+        caption: "tempering",
+        orientation: "portrait",
+        focus: "50% 35%",
+    },
+    {
+        src: asset("images/gallery/06-shavings.webp"),
+        alt: "A knife scraping dark chocolate shavings over a cup, with bars on a wooden board",
+        caption: "shavings",
+        orientation: "landscape",
+        focus: "35% 50%",
+    },
+    {
+        src: asset("images/gallery/07-hands.webp"),
+        alt: "A maker in black gloves working at a grinder with a bowl of cacao nibs",
+        caption: "by hand",
+        orientation: "portrait",
+        focus: "50% 40%",
+    },
+    {
+        src: asset("images/gallery/08-bars.webp"),
+        alt: "Dark chocolate bars on a cooling rack next to a frangipani flower and a bowl of cacao nibs",
+        caption: "the bars",
+        orientation: "landscape",
+        focus: "50% 50%",
+    },
+    {
+        src: asset("images/gallery/09-shop.webp"),
+        alt: "Warm wooden interior of the shop with a blurred figure at the counter",
+        caption: "the shop",
+        orientation: "portrait",
+        focus: "50% 55%",
+    },
 ]
 
 // ── Footer ───────────────────────────────────────────────────────────────────

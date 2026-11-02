@@ -7,6 +7,8 @@ type Props = {
     /** Подпись на плейсхолдере, пока файла нет */
     label?: string
     fit?: "contain" | "cover"
+    /** true — для картинок первого экрана (грузятся сразу, а не лениво) */
+    eager?: boolean
     style?: CSSProperties
     className?: string
 }
@@ -21,6 +23,7 @@ export default function SafeImage({
     alt,
     label,
     fit = "cover",
+    eager = false,
     style,
     className,
 }: Props) {
@@ -64,7 +67,7 @@ export default function SafeImage({
             src={src}
             alt={alt}
             className={className}
-            loading="lazy"
+            loading={eager ? "eager" : "lazy"}
             decoding="async"
             onError={() => setFailed(true)}
             style={{
