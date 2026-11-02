@@ -6,7 +6,7 @@
 /* Обёртка страницы: фон с едва заметным «бумажным» зерном */
 .page {
     min-height: 100vh;
-    padding: clamp(96px, 12vw, 136px) var(--gutter) clamp(64px, 8vw, 112px);
+    padding: clamp(124px, 13vw, 156px) var(--gutter) clamp(64px, 8vw, 112px);
     background-color: var(--c-bg);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
 }
@@ -229,5 +229,39 @@
 @media (prefers-reduced-motion: reduce) {
     .modal__card {
         animation: none;
+    }
+}
+
+/* ── Появление блоков и смена страниц ── */
+.page-fade {
+    animation: page-fade 0.5s ease both; /* только прозрачность: transform сломал бы sticky в шапке главной */
+}
+@keyframes page-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+[data-rv] {
+    opacity: 0;
+    translate: 0 28px; /* отдельное свойство translate, чтобы не перебивать наклон карточек через transform */
+    transition:
+        opacity 0.8s var(--ease-out) var(--rv-delay, 0ms),
+        translate 0.9s var(--ease-out) var(--rv-delay, 0ms);
+}
+[data-rv][data-rv-in] {
+    opacity: 1;
+    translate: 0 0;
+}
+@media (prefers-reduced-motion: reduce) {
+    .page-fade {
+        animation: none;
+    }
+    [data-rv] {
+        opacity: 1;
+        translate: none;
+        transition: none;
     }
 }

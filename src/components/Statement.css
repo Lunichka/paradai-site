@@ -1,0 +1,95 @@
+/* Фраза-заявка с фото внутри текста (блок InlineMediaText из Framer) */
+.stmt {
+    background: var(--c-bg);
+    padding: var(--section-y) var(--gutter);
+}
+.stmt__inner {
+    max-width: 860px;
+    margin: 0 auto;
+}
+.stmt__text {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(19px, 2.6vw, 34px);
+    line-height: 1.38;
+    letter-spacing: -0.02em;
+    color: var(--c-ink);
+    text-wrap: pretty;
+    text-align: center;
+}
+.stmt__word {
+    display: inline-block;
+}
+
+/* Окошко: 1.7em × 0.92em, по высоте встаёт на строку текста */
+.stmt__slot {
+    display: inline-block;
+    vertical-align: -0.1em;
+    margin-inline: 0.08em;
+}
+.stmt__photo {
+    --stmt-scale: 2.5;
+    font: inherit; /* иначе размеры в em считаются от шрифта кнопки по умолчанию, а не от фразы */
+    position: relative;
+    display: block;
+    width: 1.7em;
+    height: 0.92em;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 7px;
+    background: #d9cdb8;
+    cursor: zoom-in;
+    transform-origin: center;
+    transition:
+        transform 0.45s var(--ease-out),
+        box-shadow 0.45s var(--ease-out);
+}
+.stmt__photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    user-select: none;
+}
+.stmt__photo img.is-active {
+    opacity: 1;
+}
+.stmt__photo:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+}
+.stmt__photo.is-open {
+    z-index: 6;
+    cursor: zoom-out;
+    transform: scale(var(--stmt-scale));
+    box-shadow: 0 18px 40px -12px rgba(44, 30, 26, 0.45);
+}
+@media (hover: hover) {
+    .stmt__photo:hover {
+        z-index: 6;
+        transform: scale(var(--stmt-scale));
+        box-shadow: 0 18px 40px -12px rgba(44, 30, 26, 0.45);
+    }
+}
+.stmt__slot:hover,
+.stmt__slot:has(.is-open) {
+    position: relative;
+    z-index: 6;
+}
+
+@media (max-width: 767px) {
+    .stmt__photo {
+        --stmt-scale: 3.2;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .stmt__photo,
+    .stmt__photo img {
+        transition: none;
+    }
+}

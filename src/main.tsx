@@ -7,6 +7,9 @@ import { BrowserRouter } from "react-router-dom"
 import "@fontsource/boldonse/400.css"
 import "@fontsource/italiana/400.css"
 import "@fontsource-variable/inter"
+// Тайские буквы: нужен только для переключателя TH в шапке (в Inter тайских знаков нет)
+import "@fontsource/noto-sans-thai/thai-400.css"
+import "@fontsource/noto-sans-thai/thai-700.css"
 
 import "./styles/tokens.css"
 import "./styles/global.css"

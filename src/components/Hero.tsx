@@ -271,7 +271,7 @@ export default function Hero({
                     style={{
                         position: "absolute",
                         left: "50%",
-                        top: "clamp(48px, 8vh, 86px)",
+                        top: "clamp(112px, 16vh, 150px)", // ниже шапки (96px на десктопе, 80px на телефоне)
                         transform: "translateX(-50%)",
                         width: "min(92vw, 900px)",
                         textAlign: "center",

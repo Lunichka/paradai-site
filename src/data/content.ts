@@ -183,6 +183,25 @@ export const galleryPhotos: GalleryPhoto[] = [
     },
 ]
 
+// ── Statement (фраза с вставными фото под шапкой главной) ────────────────────
+// Это блок InlineMediaText из Framer. Фото появляются внутри фразы после слов на указанных
+// позициях (at — процент пути по тексту: 10 = после ~10% слов) и сменяют друг друга.
+// Картинки из Framer-блока (скриншоты из соцсетей, низкое разрешение) вытащить не удалось,
+// поэтому здесь фото мастерской из галереи. Поменять — просто подставьте другие файлы.
+const photo = (n: number) => galleryPhotos[n]
+
+export const statement = {
+    text: "Thai Craft Chocolate Maker. The Overall Winner of International Chocolate Awards - World Final 2022",
+    slots: [
+        { at: 10, photos: [photo(5), photo(7)] },
+        { at: 25, photos: [photo(0), photo(6)] },
+        { at: 55, photos: [photo(4), photo(2)] },
+        { at: 88, photos: [photo(8), photo(1)] },
+    ],
+    // Как долго каждое фото стоит на месте, мс
+    holdMs: 3200,
+}
+
 // ── Footer ───────────────────────────────────────────────────────────────────
 export const footerContent = {
     headline: ["Paradai Chocolate", "Crafted in Bangkok, Thailand"],

@@ -1,4 +1,5 @@
 import Hero from "../components/Hero"
+import Statement from "../components/Statement"
 import Collection from "../components/Collection"
 import Bento from "../components/Bento"
 import Gallery from "../components/Gallery"
@@ -10,6 +11,7 @@ export default function Home() {
     return (
         <>
             <Hero />
+            <Statement />
             <Collection />
             <Bento />
             <Gallery />
