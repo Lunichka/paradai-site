@@ -7,7 +7,7 @@ export default function Bento() {
     return (
         <section id="story" className="bento">
             <div className="bento__inner">
-                <h2 className="section-title bento__title">from Phuket with pride</h2>
+                <h2 className="section-title bento__title">from Thailand with pride</h2>
 
                 <div className="bento__grid">
                     {/* 1. Фото в стиле полароида */}
@@ -16,10 +16,11 @@ export default function Bento() {
                         <div className="bento__photo">
                             <SafeImage
                                 src={bentoPhoto}
-                                alt="Cacao farmers tending young plants in a nursery"
+                                alt="Woman with a woven basket reaching up into a cacao tree"
                                 label="Farmers photo"
                             />
                         </div>
+                        <figcaption className="bento__credit">Photo: PARADAI Facebook page</figcaption>
                     </figure>
 
                     <div className="bento__col">
@@ -32,8 +33,8 @@ export default function Bento() {
                             <div>
                                 <h3 className="bento__label">Our Mission</h3>
                                 <p className="bento__mission">
-                                    We work directly with local farmers on Phuket island and
-                                    nearby provinces. Together, we nurture the crops to bring out
+                                    We work directly with local farmers in Phuket and
+                                    other provinces across Thailand. Together, we nurture the crops to bring out
                                     the unique, floral character of authentic Thai cacao.
                                 </p>
                             </div>
@@ -47,9 +48,9 @@ export default function Bento() {
                         {/* 3. Две маленькие карточки */}
                         <div className="bento__mini-row">
                             <div className="bento__mini">
-                                <h4 className="bento__mini-title">Location</h4>
-                                <p className="bento__mini-value">7.8804° N, 98.3923° E</p>
-                                <p className="bento__mini-sub">Phuket Highlands</p>
+                                <h4 className="bento__mini-title">Shops</h4>
+                                <p className="bento__mini-value">Bangkok &amp; Phuket</p>
+                                <p className="bento__mini-sub">Thailand</p>
                             </div>
                             <div className="bento__mini">
                                 <h4 className="bento__mini-title">Sourcing</h4>

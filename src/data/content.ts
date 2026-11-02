@@ -64,18 +64,17 @@ export const products = [
     },
 ]
 
-// ── Bento ("from Phuket with pride") ─────────────────────────────────────────
-// ⚠ Это превью Unsplash+ (на фото виден водяной знак). Нужна купленная/своя фотография.
-export const bentoPhoto =
-    "https://plus.unsplash.com/premium_photo-1679366698077-cc947df22bd0?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+// ── Bento ("from Thailand with pride") ─────────────────────────────────────────
+// Фото со страницы PARADAI в Facebook (подпись под фото — в Bento.tsx).
+export const bentoPhoto = asset("images/story/cacao-farm.webp")
 
 // ── Why Paradai ──────────────────────────────────────────────────────────────
 export const whySteps = [
     {
         number: "01",
         title: "ORIGIN",
-        label: "From Phuket, Thailand",
-        body: "We source cacao exclusively from small family farms in Phuket's highlands — where volcanic soil and coastal humidity produce beans with a rare floral depth no other region can replicate.",
+        label: "From Thailand",
+        body: "We source cacao from small family farms in Thailand — where tropical soil and coastal humidity produce beans with a rare floral depth.",
     },
     {
         number: "02",

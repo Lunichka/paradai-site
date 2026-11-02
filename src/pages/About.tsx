@@ -39,7 +39,7 @@ export default function About() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: EASE }}
                     >
-                        the phuket cacao <span>story</span>
+                        the paradai cacao <span>story</span>
                     </motion.h1>
                     <motion.p
                         className="page-lead"
@@ -47,7 +47,7 @@ export default function About() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
                     >
-                        A journey born in the wild highlands of Phuket, shaped by family tradition and crafted with uncompromising local pride.
+                        A journey that began on a family cacao farm in Phuket and grew across Thailand, shaped by family tradition and crafted with uncompromising local pride.
                     </motion.p>
                 </section>
 
@@ -64,7 +64,7 @@ export default function About() {
                             <div className="cacao-card__art">
                                 <SafeImage src={heroImages.pod} alt="" label="Cacao pod" fit="contain" />
                             </div>
-                            <p>Phuket Highlands Soil</p>
+                            <p>Thai Tropical Soil</p>
                         </Reveal>
                     </TimelineItem>
 
@@ -126,7 +126,7 @@ export default function About() {
                     <TimelineItem
                         number="04 / The Awards"
                         title="World Recognition"
-                        text="The exciting taste play and delicate extraction of our Phuket cacao earned the prestigious Silver Medal at the International Chocolate Awards World Final 2023."
+                        text="The exciting taste play and delicate extraction of our Thai cacao earned the prestigious Silver Medal at the International Chocolate Awards World Final 2023."
                         reverse
                         animate={animate}
                     >

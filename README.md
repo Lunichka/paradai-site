@@ -60,12 +60,12 @@ npm run preview  # посмотреть собранную версию
 вырезки для шапки в `hero/`, фото мастерской в `gallery/`, бонбоны в `bonbons/`.
 Если файла нет или он не загрузился, компонент показывает аккуратную заглушку с подписью, а не «сломанную» картинку.
 
+Фото в блоке «from Thailand with pride» — `public/images/story/cacao-farm.webp` (со страницы PARADAI в Facebook, подпись под фото в `Bento.tsx`).
 Фото плиток и портрет основателя лежат в `public/images/products/` (WebP). Плитки Nakhon 75% и Chanthaburi 70% вырезаны
 из студийных кадров с мягкой тенью, остальные — фото на ткани. Пути заданы в `src/data/shop.ts` и `src/data/content.ts`.
 
 > **Что ещё нужно заменить.** Пока по внешним ссылкам из старого Framer-проекта подтягиваются: Single Origin Dark 85%,
-> Cacao Powder, Assorted Bonbons Box, Trang 82% (карточки в магазине), карточки 02 и 04 на главной и фото Unsplash+
-> в блоке «from Phuket with pride» (на нём водяной знак). Ссылки могут умереть, поэтому положите свои файлы
+> Cacao Powder, Assorted Bonbons Box, Trang 82% (карточки в магазине) и карточки 02 и 04 на главной. Ссылки могут умереть, поэтому положите свои файлы
 > в `public/images/products/` и поменяйте пути.
 
 ## Адрес сайта и GitHub Pages
